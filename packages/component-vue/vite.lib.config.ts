@@ -4,9 +4,6 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import * as path from 'path'
-import typescript2 from 'rollup-plugin-typescript2'
-import dts from 'vite-plugin-dts'
-
 import noBundlePlugin from 'vite-plugin-no-bundle'
 
 // https://vitejs.dev/config/
@@ -14,23 +11,9 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
-    dts({
-      insertTypesEntry: true
-    }),
-    typescript2({
-      check: true,
-      include: ['components/**/*.vue'],
-      tsconfigOverride: {
-        compilerOptions: {
-          outDir: 'dist',
-          sourceMap: true,
-          declaration: true,
-          declarationMap: true
-        }
-      },
-      exclude: ['vite.config.ts']
-    }),
-    noBundlePlugin()
+    noBundlePlugin({
+      root: 'components'
+    })
   ],
   build: {
     cssCodeSplit: true,
@@ -38,8 +21,7 @@ export default defineConfig({
       // Could also be a dictionary or array of multiple entry points
       entry: 'components/main.ts',
       name: 'all-in-material-vue-ts',
-      formats: ['es', 'cjs', 'umd'],
-      fileName: (format) => `all-in-material-vue-ts.${format}.js`
+      formats: ['es', 'cjs']
     },
     rollupOptions: {
       // make sure to externalize deps that should not be bundled
@@ -56,7 +38,7 @@ export default defineConfig({
         exports: 'named',
         globals: {
           vue: 'Vue'
-        }
+        },
       }
     }
   },

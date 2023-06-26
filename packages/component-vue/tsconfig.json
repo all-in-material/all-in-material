@@ -5,6 +5,7 @@
     "**/*.d.ts",
     "**/*.tsx",
     "**/*.vue"
+    // "all-in-material-vue.d.ts"
   ],
   "exclude": [
     "**/__tests__/*",

@@ -1,24 +1,24 @@
 {
-  "name": "@all-in-material/vue-ui",
+  "name": "@all-in-material/component-vue",
   "version": "0.0.0",
-  "type": "module",
   "files": [
     "dist",
     "components"
   ],
-  "main": "./dist/all-in-material-vue-ts.umd.js",
+  "main": "./dist/all-in-material-vue-ts.cjs.js",
   "module": "./dist/all-in-material-vue-ts.es.js",
   "exports": {
     ".": {
+      "types": "./dist/all-in-material-vue.d.ts",
       "import": "./dist/all-in-material-vue-ts.es.js",
-      "require": "./dist/all-in-material-vue-ts.es.js"
+      "require": "./dist/all-in-material-vue-ts.cjs.js"
     },
-    "./dist/all-in-material-vue-ts.css": {
+    "./all-in-material-vue-ts.css": {
       "import": "./dist/all-in-material-vue-ts.css",
       "require": "./dist/all-in-material-vue-ts.css"
     }
   },
-  "types": "./dist/all-in-material-vue-ts.es.d.ts",
+  "typings": "./dist/all-in-material-vue.d.ts",
   "scripts": {
     "build": "run-p type-check build-only",
     "build-only": "vite build",
@@ -27,7 +27,6 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
-    "element-plus": "^2.3.7",
     "vue": "^3.3.4"
   },
   "devDependencies": {
