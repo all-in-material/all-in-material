@@ -6,6 +6,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import * as path from 'path'
 import typescript2 from 'rollup-plugin-typescript2'
 import dts from 'vite-plugin-dts'
+import postcssPresetEnv from 'postcss-preset-env'
+const postcssScss = require('postcss-scss')
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -29,6 +31,12 @@ export default defineConfig({
       insertTypesEntry: true
     })
   ],
+  css: {
+    postcss: {
+      syntax: postcssScss,
+      plugins: [postcssPresetEnv()]
+    }
+  },
   build: {
     cssCodeSplit: true,
     lib: {
