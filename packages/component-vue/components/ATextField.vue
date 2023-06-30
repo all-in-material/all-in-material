@@ -1,12 +1,12 @@
 <script lang="ts" setup>
-import { computed, ref, watch } from 'vue'
-import { useFocus } from '@vueuse/core'
-
 import '../style/components/ATextField.css'
 
-const props = defineProps(['label', 'type', 'modelValue', 'modelModifiers'])
+import { computed, ref, watch } from 'vue'
+import { useFocusWithin } from '@vueuse/core'
+
+const props = defineProps(['type', 'label', 'filled', 'modelValue', 'modelModifiers'])
 const emits = defineEmits(['update:modelValue'])
-const input = ref<HTMLElement>()
+const target = ref<HTMLElement>()
 
 // 封装外部 v-model 的双向绑定
 const outerModel = computed({
@@ -17,7 +17,7 @@ const outerModel = computed({
 const innerModel = ref(props.modelValue)
 
 // 判断 Label 是否应该上浮
-const { focused } = useFocus(input)
+const { focused } = useFocusWithin(target)
 const active = computed(() => focused.value || !!innerModel.value)
 
 // 监听外部 v-model 的变化并同步
@@ -39,11 +39,22 @@ watch(
     if (!v && props.modelModifiers?.lazy) outerModel.value = innerModel.value
   }
 )
+
+// 计算绑定的属性
+const binds = computed(() => ({
+  class: 'a-textfield',
+  ref: 'target',
+
+  focused: focused.value ? '' : null,
+  active: active.value ? '' : null,
+  outlined: props.filled ? null : '',
+  filled: props.filled ? '' : null
+}))
 </script>
 
 <template>
-  <div class="a-textfield" :active="active">
+  <div v-bind="binds">
     <label>{{ label }}</label>
-    <input :type="props.type" ref="input" v-model="innerModel" />
+    <input type="text" ref="input" v-model="innerModel" />
   </div>
 </template>

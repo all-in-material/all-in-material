@@ -7,21 +7,34 @@ const meta: Meta<typeof ATextField> = {
     component: ATextField
 };
 
+const model = ref('');
+const updateModel = (value: any) => model.value = value
+
 export default meta;
 type Story = StoryObj<typeof ATextField>;
 
-export const Default: Story = {
+export const Outlined: Story = {
     render: (args) => ({
         components: { ATextField },
-        setup: () => {
-            const model = ref('');
-            const updateModel = (value: any) => model.value = value
-
-            return { args, model, updateModel }
-        },
+        setup: () => ({ args, model, updateModel }),
         template: '<ATextField v-bind="args" v-model="model" /><div>{{ model }}</div>'
     }),
     args: {
-        label: '用户名'
+        label: '用户名',
+        type: 'text',
+        filled: false
+    },
+};
+
+export const Filled: Story = {
+    render: (args) => ({
+        components: { ATextField },
+        setup: () => ({ args, model, updateModel }),
+        template: '<ATextField v-bind="args" v-model="model" /><div>{{ model }}</div>'
+    }),
+    args: {
+        label: '用户名',
+        type: 'text',
+        filled: true
     },
 };
