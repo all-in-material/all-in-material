@@ -1,0 +1,35 @@
+.a-textfield {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 52px;
+}
+
+.a-textfield label {
+    position: absolute;
+    left: .8rem;
+    padding: 0 5px;
+    transform: translate(-5px, calc(-50% - 1px + 52px / 2));
+    transition: font-size .2s, transform .2s;
+    pointer-events: none;
+    background-color: #fff;
+}
+
+.a-textfield[active='true'] label {
+    font-size: .9rem;
+    transform: translate(-5px, -50%);
+}
+
+.a-textfield input {
+    height: 100%;
+    border: 1px solid #000000;
+    border-radius: 4px;
+    padding: 0 .8rem 1px;
+    font-size: 1rem;
+    outline: 0px solid #000000;
+    transition: outline-width .05s;
+}
+
+.a-textfield input:focus-visible {
+    outline: 1.5px solid #000000;
+}
