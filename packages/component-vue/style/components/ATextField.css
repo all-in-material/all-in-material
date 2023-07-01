@@ -3,12 +3,57 @@
     user-select: none;
 }
 
+.a-textfield[standard],
 .a-textfield[outlined],
 .a-textfield[filled] {
     position: relative;
     display: flex;
     flex-direction: column;
     height: 52px;
+}
+
+.a-textfield[standard] input:focus-visible,
+.a-textfield[filled] input:focus-visible {
+    outline: 0px;
+}
+
+.a-textfield[standard]::after,
+.a-textfield[filled]::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transform: translateX(-50%);
+    transition: width .25s;
+}
+
+.a-textfield[standard][focused]::after,
+.a-textfield[filled][focused]::after {
+    width: 100%;
+}
+
+/* Standard TextField */
+.a-textfield[standard] label {
+    position: absolute;
+    margin-left: 7px;
+    transform: translate(-5px, calc(52px / 2 - 50% - 1px + 6px));
+    transition: transform .3s, font-size .3s;
+}
+
+.a-textfield[active][standard] label {
+    font-size: .8rem;
+    transform: translate(-5px, 0);
+}
+
+.a-textfield[standard] input {
+    height: 100%;
+    font-size: 1rem;
+    border: 0;
+    border-bottom: 1px solid #000000;
+    padding-top: 14px;
 }
 
 /* Outlined TextField */
@@ -62,24 +107,4 @@
     border-radius: 4px 4px 0 0;
     font-size: 1rem;
     background-color: rgba(0, 0, 0, .06);
-}
-
-.a-textfield[filled] input:focus-visible {
-    outline: 0px;
-}
-
-.a-textfield[filled]::after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0px;
-    width: 0;
-    height: 2px;
-    background: #000;
-    transform: translateX(-50%);
-    transition: width .25s;
-}
-
-.a-textfield[filled][focused]::after {
-    width: 100%;
 }

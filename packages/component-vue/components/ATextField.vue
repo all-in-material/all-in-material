@@ -4,7 +4,7 @@ import '../style/components/ATextField.css'
 import { computed, ref, watch } from 'vue'
 import { useFocusWithin } from '@vueuse/core'
 
-const props = defineProps(['type', 'label', 'filled', 'modelValue', 'modelModifiers'])
+const props = defineProps(['type', 'label', 'outlined', 'filled', 'modelValue', 'modelModifiers'])
 const emits = defineEmits(['update:modelValue'])
 const target = ref<HTMLElement>()
 
@@ -47,7 +47,8 @@ const binds = computed(() => ({
 
   focused: focused.value ? '' : null,
   active: active.value ? '' : null,
-  outlined: props.filled ? null : '',
+  standard: props.filled || props.outlined ? null : '',
+  outlined: props.outlined ? '' : null,
   filled: props.filled ? '' : null
 }))
 </script>

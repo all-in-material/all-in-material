@@ -13,6 +13,18 @@ const updateModel = (value: any) => model.value = value
 export default meta;
 type Story = StoryObj<typeof ATextField>;
 
+export const Standard: Story = {
+    render: (args) => ({
+        components: { ATextField },
+        setup: () => ({ args, model, updateModel }),
+        template: '<ATextField v-bind="args" v-model="model" /><div>{{ model }}</div>'
+    }),
+    args: {
+        label: '用户名',
+        type: 'text'
+    },
+};
+
 export const Outlined: Story = {
     render: (args) => ({
         components: { ATextField },
@@ -22,7 +34,7 @@ export const Outlined: Story = {
     args: {
         label: '用户名',
         type: 'text',
-        filled: false
+        outlined: true
     },
 };
 
