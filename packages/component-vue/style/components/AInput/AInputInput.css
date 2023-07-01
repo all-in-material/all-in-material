@@ -1,24 +1,20 @@
 /* Base Style */
-.a-textfield label {
-    user-select: none;
-}
-
-.a-textfield[standard],
-.a-textfield[outlined],
-.a-textfield[filled] {
+.a-input[input][standard],
+.a-input[input][outlined],
+.a-input[input][filled] {
     position: relative;
     display: flex;
     flex-direction: column;
     height: 52px;
 }
 
-.a-textfield[standard] input:focus-visible,
-.a-textfield[filled] input:focus-visible {
+.a-input[input][standard] input:focus-visible,
+.a-input[input][filled] input:focus-visible {
     outline: 0px;
 }
 
-.a-textfield[standard]::after,
-.a-textfield[filled]::after {
+.a-input[input][standard]::after,
+.a-input[input][filled]::after {
     content: '';
     position: absolute;
     left: 50%;
@@ -30,25 +26,25 @@
     transition: width .25s;
 }
 
-.a-textfield[standard][focused]::after,
-.a-textfield[filled][focused]::after {
+.a-input[input][standard][focused]::after,
+.a-input[input][filled][focused]::after {
     width: 100%;
 }
 
 /* Standard TextField */
-.a-textfield[standard] label {
+.a-input[input][standard] label {
     position: absolute;
     margin-left: 7px;
     transform: translate(-5px, calc(52px / 2 - 50% - 1px + 6px));
     transition: transform .3s, font-size .3s;
 }
 
-.a-textfield[active][standard] label {
+.a-input[input][active][standard] label {
     font-size: .8rem;
     transform: translate(-5px, 0);
 }
 
-.a-textfield[standard] input {
+.a-input[input][standard] input {
     height: 100%;
     font-size: 1rem;
     border: 0;
@@ -57,7 +53,7 @@
 }
 
 /* Outlined TextField */
-.a-textfield[outlined] label {
+.a-input[input][outlined] label {
     position: absolute;
     left: .8rem;
     padding: 0 5px;
@@ -67,12 +63,12 @@
     background-color: #fff;
 }
 
-.a-textfield[outlined][active] label {
+.a-input[input][outlined][active] label {
     font-size: .8rem;
     transform: translate(-5px, -50%);
 }
 
-.a-textfield[outlined] input {
+.a-input[input][outlined] input {
     height: 100%;
     border: 1px solid #000000;
     border-radius: 4px;
@@ -82,24 +78,24 @@
     transition: outline-width .05s;
 }
 
-.a-textfield[outlined] input:focus-visible {
+.a-input[input][outlined] input:focus-visible {
     outline: 1.5px solid #000000;
 }
 
 /* Filled TextField */
-.a-textfield[filled] label {
+.a-input[input][filled] label {
     position: absolute;
     left: .8rem;
     transform: translateY(calc(52px / 2 - 50% - 1px));
     transition: font-size .25s, transform .25s;
 }
 
-.a-textfield[active][filled] label {
+.a-input[input][active][filled] label {
     font-size: .75rem;
     transform: translateY(6px);
 }
 
-.a-textfield[filled] input {
+.a-input[input][filled] input {
     height: 100%;
     padding: 19px .8rem 1px;
     border: 0;

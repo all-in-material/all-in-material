@@ -1,0 +1,4 @@
+/* Base Style */
+.a-input label {
+    user-select: none;
+}

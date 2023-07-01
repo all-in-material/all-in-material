@@ -1,10 +1,12 @@
 <script lang="ts" setup>
-import '../style/components/ATextField.css'
+import '../style/components/AInput.css'
 
 import { computed, ref, watch } from 'vue'
 import { useFocusWithin } from '@vueuse/core'
+import AInputInput from './AInput/AInputInput.vue'
+import type { IAInputProps } from '@/interfaces/IAInputProps'
 
-const props = defineProps(['type', 'label', 'outlined', 'filled', 'modelValue', 'modelModifiers'])
+const props = defineProps<IAInputProps>()
 const emits = defineEmits(['update:modelValue'])
 const target = ref<HTMLElement>()
 
@@ -45,17 +47,29 @@ const binds = computed(() => ({
   class: 'a-textfield',
   ref: 'target',
 
+  type: props.type,
+  label: props.label,
+
   focused: focused.value ? '' : null,
   active: active.value ? '' : null,
   standard: props.filled || props.outlined ? null : '',
   outlined: props.outlined ? '' : null,
-  filled: props.filled ? '' : null
+  filled: props.filled ? '' : null,
+
+  modelValue: innerModel.value,
+  'onUpdate:modelValue': (v: string) => (innerModel.value = v)
 }))
+
+// 判断组件类型
+const inputType = computed(
+  () =>
+    ({
+      text: 'input',
+      password: 'input'
+    }[props.type])
+)
 </script>
 
 <template>
-  <div v-bind="binds">
-    <label>{{ label }}</label>
-    <input :type="props.type" ref="input" v-model="innerModel" />
-  </div>
+  <AInputInput v-bind="binds" v-if="inputType == 'input'" />
 </template>
