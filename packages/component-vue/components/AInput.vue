@@ -5,6 +5,7 @@ import { computed, ref, watch } from 'vue'
 import { useFocusWithin } from '@vueuse/core'
 import AInputInput from './AInput/AInputInput.vue'
 import type { IAInputProps } from '@/interfaces/IAInputProps'
+import AInputTextarea from './AInput/AInputTextarea.vue'
 
 const props = defineProps<IAInputProps>()
 const emits = defineEmits(['update:modelValue'])
@@ -44,7 +45,7 @@ watch(
 
 // 计算绑定的属性
 const binds = computed(() => ({
-  class: 'a-textfield',
+  class: 'a-input',
   ref: 'target',
 
   type: props.type,
@@ -65,11 +66,13 @@ const inputType = computed(
   () =>
     ({
       text: 'input',
-      password: 'input'
+      password: 'input',
+      textarea: 'textarea'
     }[props.type])
 )
 </script>
 
 <template>
   <AInputInput v-bind="binds" v-if="inputType == 'input'" />
+  <AInputTextarea v-bind="binds" v-else-if="inputType == 'textarea'" />
 </template>

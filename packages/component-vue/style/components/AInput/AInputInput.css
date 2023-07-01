@@ -10,7 +10,7 @@
 
 .a-input[input][standard] input:focus-visible,
 .a-input[input][filled] input:focus-visible {
-    outline: 0px;
+    outline: 0;
 }
 
 .a-input[input][standard]::after,

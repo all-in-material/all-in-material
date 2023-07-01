@@ -33,7 +33,7 @@ export const Outlined: Story = {
     }),
     args: {
         label: '用户名',
-        type: 'text',
+        type: 'password',
         outlined: true
     },
 };
@@ -48,5 +48,18 @@ export const Filled: Story = {
         label: '用户名',
         type: 'text',
         filled: true
+    },
+};
+
+export const TextareaStandard: Story = {
+    render: (args) => ({
+        components: { AInput },
+        setup: () => ({ args, model, updateModel }),
+        template: '<AInput v-bind="args" v-model="model" /><div>{{ model }}</div>'
+    }),
+    args: {
+        label: '个人简介',
+        type: 'textarea',
+        outlined: true
     },
 };

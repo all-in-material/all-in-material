@@ -1,0 +1,35 @@
+/* Base Style */
+.a-input[textarea][outlined] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.a-input[textarea][outlined] label {
+    position: absolute;
+    left: calc(.8rem + 4px);
+    padding: 0 5px;
+    transform: translate(-5px, calc(52px / 2 - 50% - 1px));
+    transition: transform .2s, font-size .2s;
+    background-color: #fff;
+}
+
+.a-input[active][textarea][outlined] label {
+    font-size: .8rem;
+    transform: translate(-5px, -50%);
+}
+
+.a-input[textarea][outlined] textarea {
+    height: 52px;
+    resize: none;
+    padding: .8rem 1rem;
+    line-height: 24px;
+    font-size: 1rem;
+    border-radius: 4px;
+    outline: 0px solid #000000;
+    transition: outline-width .05s;
+}
+
+.a-input[textarea][outlined] textarea:focus-visible {
+    outline: 1.5px solid #000000;
+}
