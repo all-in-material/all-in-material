@@ -55,6 +55,6 @@ const binds = computed(() => ({
 <template>
   <div v-bind="binds">
     <label>{{ label }}</label>
-    <input type="text" ref="input" v-model="innerModel" />
+    <input :type="props.type" ref="input" v-model="innerModel" />
   </div>
 </template>
