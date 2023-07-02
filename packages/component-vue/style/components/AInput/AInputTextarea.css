@@ -1,13 +1,23 @@
 /* Base Style */
-.a-input[textarea][outlined] {
+.a-input[textarea][outlined],
+.a-input[textarea][filled] {
     position: relative;
     display: flex;
     flex-direction: column;
 }
 
+.a-input[textarea][outlined] textarea,
+.a-input[textarea][filled] textarea {
+    height: 52px;
+    resize: none;
+    line-height: 24px;
+    font-size: 1rem;
+}
+
+/* Outlined Textarea Style */
 .a-input[textarea][outlined] label {
     position: absolute;
-    left: calc(.8rem + 4px);
+    left: .8rem;
     padding: 0 5px;
     transform: translate(-5px, calc(52px / 2 - 50% - 1px));
     transition: transform .2s, font-size .2s;
@@ -20,11 +30,7 @@
 }
 
 .a-input[textarea][outlined] textarea {
-    height: 52px;
-    resize: none;
-    padding: .8rem 1rem;
-    line-height: 24px;
-    font-size: 1rem;
+    padding: .8rem;
     border-radius: 4px;
     outline: 0px solid #000000;
     transition: outline-width .05s;
@@ -32,4 +38,49 @@
 
 .a-input[textarea][outlined] textarea:focus-visible {
     outline: 1.5px solid #000000;
+}
+
+/* Filled Textarea Style */
+.a-input[textarea][filled] label {
+    position: absolute;
+}
+
+.a-input[textarea][filled] textarea {
+    border: 0;
+    border-bottom: 1px solid #000000;
+    background-color: rgba(0, 0, 0, .06);
+    border-radius: 4px 4px 0 0;
+    padding: 24px .8rem 1px;
+}
+
+.a-input[textarea][filled] textarea:focus-visible {
+    outline: 0;
+}
+
+.a-input[textarea][filled] label {
+    position: absolute;
+    left: .8rem;
+    transform: translateY(calc(52px / 2 - 50% - 1px));
+    transition: font-size .25s, transform .25s;
+}
+
+.a-input[textarea][active][filled] label {
+    font-size: .75rem;
+    transform: translateY(6px);
+}
+
+.a-input[textarea][filled]::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0px;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transform: translateX(-50%);
+    transition: width .25s;
+}
+
+.a-input[textarea][filled][focused]::after {
+    width: 100%;
 }

@@ -31,7 +31,7 @@
     width: 100%;
 }
 
-/* Standard TextField */
+/* Standard Input Style */
 .a-input[input][standard] label {
     position: absolute;
     margin-left: 7px;
@@ -52,7 +52,7 @@
     padding-top: 14px;
 }
 
-/* Outlined TextField */
+/* Outlined Input Style */
 .a-input[input][outlined] label {
     position: absolute;
     left: .8rem;
@@ -82,7 +82,7 @@
     outline: 1.5px solid #000000;
 }
 
-/* Filled TextField */
+/* Filled Input Style */
 .a-input[input][filled] label {
     position: absolute;
     left: .8rem;
