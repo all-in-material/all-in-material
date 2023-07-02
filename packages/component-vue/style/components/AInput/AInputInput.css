@@ -34,14 +34,13 @@
 /* Standard Input Style */
 .a-input[input][standard] label {
     position: absolute;
-    margin-left: 7px;
-    transform: translate(-5px, calc(52px / 2 - 50% - 1px + 6px));
+    transform: translateY(calc(52px / 2 - 50% - 1px + 7px));
     transition: transform .3s, font-size .3s;
 }
 
 .a-input[input][active][standard] label {
     font-size: .8rem;
-    transform: translate(-5px, 0);
+    transform: translateY(0);
 }
 
 .a-input[input][standard] input {
@@ -50,6 +49,8 @@
     border: 0;
     border-bottom: 1px solid #000000;
     padding-top: 14px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* Outlined Input Style */

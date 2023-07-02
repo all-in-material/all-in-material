@@ -59,7 +59,32 @@ export const TextareaStandard: Story = {
     }),
     args: {
         label: '个人简介',
+        type: 'textarea'
+    },
+};
+
+export const TextareaOutlined: Story = {
+    render: (args) => ({
+        components: { AInput },
+        setup: () => ({ args, model, updateModel }),
+        template: '<AInput v-bind="args" v-model="model" /><div>{{ model }}</div>'
+    }),
+    args: {
+        label: '个人简介',
         type: 'textarea',
         outlined: true
+    },
+};
+
+export const TextareaFilled: Story = {
+    render: (args) => ({
+        components: { AInput },
+        setup: () => ({ args, model, updateModel }),
+        template: '<AInput v-bind="args" v-model="model" /><div>{{ model }}</div>'
+    }),
+    args: {
+        label: '个人简介',
+        type: 'textarea',
+        filled: true
     },
 };
