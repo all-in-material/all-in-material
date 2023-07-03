@@ -58,12 +58,21 @@ const inputType = computed(
       textarea: 'textarea'
     }[props.type])
 )
+// 判断组件样式类别
+const inputStyle = computed(
+  () =>
+    ({
+      input: 'common',
+      textarea: 'common'
+    }[inputType.value])
+)
 
 // 计算绑定的属性
 const status = computed(() => ({
   ref: 'target',
 
   [inputType.value]: '',
+  [inputStyle.value!]: '',
   focused: focused.value ? '' : null,
   active: active.value ? '' : null,
   standard: props.filled || props.outlined ? null : '',

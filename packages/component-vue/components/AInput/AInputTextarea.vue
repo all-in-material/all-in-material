@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import '../../style/components/AInput/AInputTextarea.css'
+import '../../style/components/AInput/AInputCommon.css'
 
 import { nextTick, ref, watch } from 'vue'
 import { useVModel } from '@vueuse/core'

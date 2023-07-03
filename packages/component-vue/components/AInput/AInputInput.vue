@@ -1,16 +1,19 @@
 <script lang="ts" setup>
-import '../../style/components/AInput/AInputInput.css'
+import { ref } from 'vue';
+import '../../style/components/AInput/AInputCommon.css'
 
 import { useVModel } from '@vueuse/core'
 
 const props = defineProps(['label', 'type', 'modelValue'])
 const emits = defineEmits(['update:modelValue'])
 const model = useVModel(props, 'modelValue', emits)
+
+const textarea = ref<HTMLElement>()
 </script>
 
 <template>
-  <div>
+  <div @click="textarea?.focus()">
     <label>{{ label }}</label>
-    <input :type="props.type" v-model="model" />
+    <input v-model="model" ref="input" :type="props.type" />
   </div>
 </template>
