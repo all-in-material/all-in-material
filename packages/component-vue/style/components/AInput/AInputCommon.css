@@ -4,12 +4,8 @@
     cursor: pointer;
 }
 
-.a-input[common][standard] input,
-.a-input[common][outlined] input,
-.a-input[common][filled] input,
-.a-input[common][standard] textarea,
-.a-input[common][outlined] textarea,
-.a-input[common][filled] textarea {
+.a-input[common] input,
+.a-input[common] textarea {
     line-height: 24px;
     width: 100%;
     resize: none;
@@ -19,19 +15,13 @@
     background-color: transparent;
 }
 
-.a-input[common][standard] label,
-.a-input[common][outlined] label,
-.a-input[common][filled] label {
+.a-input[common] label {
     position: absolute;
     transform: none;
 }
 
-.a-input[common][standard] input:focus-within,
-.a-input[common][outlined] input:focus-within,
-.a-input[common][filled] input:focus-within,
-.a-input[common][standard] textarea:focus-within,
-.a-input[common][outlined] textarea:focus-within,
-.a-input[common][filled] textarea:focus-within {
+.a-input[common] input:focus-within,
+.a-input[common] textarea:focus-within {
     outline: 0;
 }
 
