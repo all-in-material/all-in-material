@@ -88,3 +88,17 @@ export const TextareaFilled: Story = {
         filled: true
     },
 };
+
+export const HelperText: Story = {
+    render: (args) => ({
+        components: { AInput },
+        setup: () => ({ args, model, updateModel }),
+        template: '<AInput v-bind="args" v-model="model"><template #helper>帮助文本</template></AInput>'
+    }),
+    args: {
+        label: '用户名',
+        type: 'text',
+        outlined: false,
+        filled: false
+    },
+};

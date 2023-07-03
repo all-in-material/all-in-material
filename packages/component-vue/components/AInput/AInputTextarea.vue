@@ -15,6 +15,6 @@ const height = computed(() => 52 + 24 * (model.value.split('\n').length - 1) + '
 <template>
   <div textarea :style="{ maxHeight: height }">
     <label>{{ label }}</label>
-    <textarea :style="{ height }" :type="props.type" ref="input" v-model="model" />
+    <textarea :style="{ height }" :type="props.type" v-model="model" />
   </div>
 </template>

@@ -1,7 +1,7 @@
 /* Base Style */
-.a-input[textarea][standard],
-.a-input[textarea][outlined],
-.a-input[textarea][filled] {
+.a-input[textarea][standard] .a-input-fields,
+.a-input[textarea][outlined] .a-input-fields,
+.a-input[textarea][filled] .a-input-fields {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -21,8 +21,8 @@
     outline: 0;
 }
 
-.a-input[textarea][standard]::after,
-.a-input[textarea][filled]::after {
+.a-input[textarea][standard] .a-input-fields::after,
+.a-input[textarea][filled] .a-input-fields::after {
     content: '';
     position: absolute;
     left: 50%;
@@ -34,8 +34,8 @@
     transition: width .25s;
 }
 
-.a-input[textarea][standard][focused]::after,
-.a-input[textarea][filled][focused]::after {
+.a-input[textarea][standard][focused] .a-input-fields::after,
+.a-input[textarea][filled][focused] .a-input-fields::after {
     width: 100%;
 }
 

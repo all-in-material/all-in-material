@@ -6,6 +6,7 @@ import { useFocusWithin } from '@vueuse/core'
 import AInputInput from './AInput/AInputInput.vue'
 import type { IAInputProps } from '@/interfaces/IAInputProps'
 import AInputTextarea from './AInput/AInputTextarea.vue'
+import AInputHelper from './AInput/AInputHelper.vue'
 
 const props = defineProps<IAInputProps>()
 const emits = defineEmits(['update:modelValue'])
@@ -43,24 +44,6 @@ watch(
   }
 )
 
-// 计算绑定的属性
-const binds = computed(() => ({
-  class: 'a-input',
-  ref: 'target',
-
-  type: props.type,
-  label: props.label,
-
-  focused: focused.value ? '' : null,
-  active: active.value ? '' : null,
-  standard: props.filled || props.outlined ? null : '',
-  outlined: props.outlined ? '' : null,
-  filled: props.filled ? '' : null,
-
-  modelValue: innerModel.value,
-  'onUpdate:modelValue': (v: string) => (innerModel.value = v)
-}))
-
 // 判断组件类型
 const inputType = computed(
   () =>
@@ -70,9 +53,35 @@ const inputType = computed(
       textarea: 'textarea'
     }[props.type])
 )
+
+// 计算绑定的属性
+const status = computed(() => ({
+  [inputType.value]: '',
+  focused: focused.value ? '' : null,
+  active: active.value ? '' : null,
+  standard: props.filled || props.outlined ? null : '',
+  outlined: props.outlined ? '' : null,
+  filled: props.filled ? '' : null
+}))
+const binds = computed(() => ({
+  class: 'a-input-fields',
+  ref: 'target',
+
+  type: props.type,
+  label: props.label,
+
+  modelValue: innerModel.value,
+  'onUpdate:modelValue': (v: string) => (innerModel.value = v)
+}))
 </script>
 
 <template>
-  <AInputInput v-bind="binds" v-if="inputType == 'input'" />
-  <AInputTextarea v-bind="binds" v-else-if="inputType == 'textarea'" />
+  <div v-bind="status" class="a-input">
+    <AInputInput v-bind="binds" v-if="inputType == 'input'" />
+    <AInputTextarea v-bind="binds" v-else-if="inputType == 'textarea'" />
+
+    <AInputHelper v-if="!!$slots?.helper">
+      <slot name="helper" />
+    </AInputHelper>
+  </div>
 </template>

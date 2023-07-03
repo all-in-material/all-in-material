@@ -1,0 +1,11 @@
+.a-input .a-input-helper {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: .75rem;
+    margin-top: 4px;
+}
+
+.a-input[outlined] .a-input-helper,
+.a-input[filled] .a-input-helper {
+    padding-left: .8rem;
+    padding-right: .8rem;
+}

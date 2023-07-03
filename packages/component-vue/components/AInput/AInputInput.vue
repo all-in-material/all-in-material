@@ -9,8 +9,8 @@ const model = useVModel(props, 'modelValue', emits)
 </script>
 
 <template>
-  <div input>
+  <div>
     <label>{{ label }}</label>
-    <input :type="props.type" ref="input" v-model="model" />
+    <input :type="props.type" v-model="model" />
   </div>
 </template>
