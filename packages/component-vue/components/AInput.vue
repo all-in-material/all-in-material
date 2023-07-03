@@ -2,7 +2,7 @@
 import '../style/components/AInput.css'
 
 import { computed, ref, watch } from 'vue'
-import { useFocusWithin } from '@vueuse/core'
+import { onClickOutside } from '@vueuse/core'
 import AInputInput from './AInput/AInputInput.vue'
 import type { IAInputProps } from '@/interfaces/IAInputProps'
 import AInputTextarea from './AInput/AInputTextarea.vue'
@@ -21,8 +21,13 @@ const outerModel = computed({
 const innerModel = ref(props.modelValue)
 
 // 判断 Label 是否应该上浮
-const { focused } = useFocusWithin(target)
+const focused = ref(false)
+const triggerFocus = (v: boolean) => (focused.value = v)
 const active = computed(() => focused.value || !!innerModel.value)
+
+// 监听失去焦点
+// 在 click 时 focus 输入框会导致 focus-within 短暂变为 false 故使用此方法
+onClickOutside(target, () => triggerFocus(false))
 
 // 监听外部 v-model 的变化并同步
 watch(
@@ -78,7 +83,7 @@ const binds = computed(() => ({
 </script>
 
 <template>
-  <div v-bind="status" class="a-input">
+  <div v-bind="status" class="a-input" @click="triggerFocus(true)">
     <AInputInput v-bind="binds" v-if="inputType == 'input'" />
     <AInputTextarea v-bind="binds" v-else-if="inputType == 'textarea'" />
 
