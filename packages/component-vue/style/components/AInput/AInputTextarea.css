@@ -1,23 +1,31 @@
 /* Base Style */
-.a-input[textarea][standard] .a-input-fields,
-.a-input[textarea][outlined] .a-input-fields,
-.a-input[textarea][filled] .a-input-fields {
+.a-input[textarea] .a-input-fields {
     position: relative;
-    display: flex;
-    flex-direction: column;
+    cursor: pointer;
 }
 
 .a-input[textarea][standard] textarea,
 .a-input[textarea][outlined] textarea,
 .a-input[textarea][filled] textarea {
-    height: 52px;
-    resize: none;
     line-height: 24px;
+    width: 100%;
+    resize: none;
+    border: 0;
+    padding: 0;
     font-size: 1rem;
+    background-color: transparent;
 }
 
-.a-input[textarea][standard] textarea:focus-visible,
-.a-input[textarea][filled] textarea:focus-visible {
+.a-input[textarea][standard] label,
+.a-input[textarea][outlined] label,
+.a-input[textarea][filled] label {
+    position: absolute;
+    transform: none;
+}
+
+.a-input[textarea][standard] textarea:focus-within,
+.a-input[textarea][outlined] textarea:focus-within,
+.a-input[textarea][filled] textarea:focus-within {
     outline: 0;
 }
 
@@ -26,7 +34,7 @@
     content: '';
     position: absolute;
     left: 50%;
-    bottom: 0px;
+    bottom: -2px;
     width: 0;
     height: 2px;
     background: #000;
@@ -39,71 +47,61 @@
     width: 100%;
 }
 
-/* Standard Textarea Style */
-.a-input[textarea][standard] label {
-    position: absolute;
-    transform: translateY(calc(52px / 2 - 50% - 1px + 7px));
+.a-input[textarea][standard] label,
+.a-input[textarea][filled] label {
     transition: transform .3s, font-size .3s;
 }
 
-.a-input[textarea][active][standard] label {
-    font-size: .8rem;
-    transform: translateY(0);
+/* Standard Textarea Style */
+.a-input[textarea][standard] .a-input-fields {
+    padding: 22px 0 6px;
+    border-bottom: 1px solid #000;
 }
 
-.a-input[textarea][standard] textarea {
-    border: 0;
-    border-bottom: 1px solid #000;
-    padding: 21px 0 1px;
+.a-input[textarea][standard][active] label {
+    font-size: .75rem;
+    transform: translateY(-20px);
 }
 
 /* Outlined Textarea Style */
-.a-input[textarea][outlined] label {
-    position: absolute;
-    left: .8rem;
-    padding: 0 5px;
-    transform: translate(-5px, calc(52px / 2 - 50% - 1px));
-    transition: transform .2s, font-size .2s;
-    background-color: #fff;
-}
-
-.a-input[active][textarea][outlined] label {
-    font-size: .8rem;
-    transform: translate(-5px, -50%);
-}
-
-.a-input[textarea][outlined] textarea {
-    padding: .8rem;
+.a-input[textarea][outlined] .a-input-fields {
+    padding: 14px 11px;
+    border: 1px solid #000;
     border-radius: 4px;
     outline: 0px solid #000000;
     transition: outline-width .05s;
 }
 
-.a-input[textarea][outlined] textarea:focus-visible {
-    outline: 1.5px solid #000000;
+.a-input[textarea][outlined][active] .a-input-fields {
+    outline: 1.5px solid #000;
+}
+
+.a-input[textarea][outlined] label {
+    background-color: #fff;
+    transition: transform .25s, font-size .25s;
+    margin-left: -5px;
+    padding: 0 5px;
+}
+
+.a-input[textarea][outlined][active] label {
+    font-size: .75rem;
+    transform: translateY(-23px);
+    background-color: #fff;
 }
 
 /* Filled Textarea Style */
-.a-input[textarea][filled] label {
-    position: absolute;
-}
-
-.a-input[textarea][filled] textarea {
-    border: 0;
-    border-bottom: 1px solid #000000;
+.a-input[textarea][filled] .a-input-fields {
+    padding: 23px 12px 5px;
+    border-bottom: 1px solid #000;
     background-color: rgba(0, 0, 0, .06);
     border-radius: 4px 4px 0 0;
-    padding: 24px .8rem 1px;
 }
 
 .a-input[textarea][filled] label {
-    position: absolute;
-    left: .8rem;
-    transform: translateY(calc(52px / 2 - 50% - 1px));
-    transition: font-size .25s, transform .25s;
+    transform: translateY(-8px);
 }
 
-.a-input[textarea][active][filled] label {
-    font-size: .75rem;
-    transform: translateY(6px);
+.a-input[textarea][filled][active] label {
+    font-size: .65rem;
+    transform: translateY(-18px);
 }

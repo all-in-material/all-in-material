@@ -17,7 +17,7 @@ export const Standard: Story = {
     render: (args) => ({
         components: { AInput },
         setup: () => ({ args, model, updateModel }),
-        template: '<AInput v-bind="args" v-model="model" /><div>{{ model }}</div>'
+        template: '<AInput v-bind="args" v-model="model"><template #helper>{{ model }}</template></AInput>'
     }),
     args: {
         label: '用户名',
@@ -29,7 +29,7 @@ export const Outlined: Story = {
     render: (args) => ({
         components: { AInput },
         setup: () => ({ args, model, updateModel }),
-        template: '<AInput v-bind="args" v-model="model" /><div>{{ model }}</div>'
+        template: '<AInput v-bind="args" v-model="model"><template #helper>{{ model }}</template></AInput>'
     }),
     args: {
         label: '用户名',
@@ -42,7 +42,7 @@ export const Filled: Story = {
     render: (args) => ({
         components: { AInput },
         setup: () => ({ args, model, updateModel }),
-        template: '<AInput v-bind="args" v-model="model" /><div>{{ model }}</div>'
+        template: '<AInput v-bind="args" v-model="model"><template #helper>{{ model }}</template></AInput>'
     }),
     args: {
         label: '用户名',
@@ -55,7 +55,7 @@ export const TextareaStandard: Story = {
     render: (args) => ({
         components: { AInput },
         setup: () => ({ args, model, updateModel }),
-        template: '<AInput v-bind="args" v-model="model" /><div>{{ model }}</div>'
+        template: '<AInput v-bind="args" v-model="model"><template #helper>{{ model }}</template></AInput>'
     }),
     args: {
         label: '个人简介',
@@ -67,7 +67,7 @@ export const TextareaOutlined: Story = {
     render: (args) => ({
         components: { AInput },
         setup: () => ({ args, model, updateModel }),
-        template: '<AInput v-bind="args" v-model="model" /><div>{{ model }}</div>'
+        template: '<AInput v-bind="args" v-model="model"><template #helper>{{ model }}</template></AInput>'
     }),
     args: {
         label: '个人简介',
@@ -80,12 +80,27 @@ export const TextareaFilled: Story = {
     render: (args) => ({
         components: { AInput },
         setup: () => ({ args, model, updateModel }),
-        template: '<AInput v-bind="args" v-model="model" /><div>{{ model }}</div>'
+        template: '<AInput v-bind="args" v-model="model"><template #helper>{{ model }}</template></AInput>'
     }),
     args: {
         label: '个人简介',
         type: 'textarea',
         filled: true
+    },
+};
+
+export const MaxRow: Story = {
+    render: (args) => ({
+        components: { AInput },
+        setup: () => ({ args, model, updateModel }),
+        template: '<AInput v-bind="args" v-model="model"><template #helper>{{ model }}</template></AInput>'
+    }),
+    args: {
+        label: '个人简介',
+        type: 'textarea',
+        maxrow: 4,
+        outlined: false,
+        filled: false
     },
 };
 

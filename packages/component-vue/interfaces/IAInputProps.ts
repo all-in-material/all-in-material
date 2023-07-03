@@ -6,7 +6,8 @@ interface IAInputProps {
     outlined?: boolean,
     filled?: boolean,
     modelValue: string,
-    modelModifiers?: IModelModifiers
+    modelModifiers?: IModelModifiers,
+    maxrow?: number
 }
 
 export type { IAInputProps }

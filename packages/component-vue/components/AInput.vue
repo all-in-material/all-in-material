@@ -56,6 +56,8 @@ const inputType = computed(
 
 // 计算绑定的属性
 const status = computed(() => ({
+  ref: 'target',
+
   [inputType.value]: '',
   focused: focused.value ? '' : null,
   active: active.value ? '' : null,
@@ -65,10 +67,10 @@ const status = computed(() => ({
 }))
 const binds = computed(() => ({
   class: 'a-input-fields',
-  ref: 'target',
 
   type: props.type,
   label: props.label,
+  maxrow: props.maxrow,
 
   modelValue: innerModel.value,
   'onUpdate:modelValue': (v: string) => (innerModel.value = v)

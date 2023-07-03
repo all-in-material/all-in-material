@@ -1,20 +1,32 @@
 <script lang="ts" setup>
 import '../../style/components/AInput/AInputTextarea.css'
 
-import { computed } from 'vue'
+import { nextTick, ref, watch } from 'vue'
 import { useVModel } from '@vueuse/core'
 
-const props = defineProps(['label', 'type', 'modelValue'])
+const props = defineProps(['label', 'maxrow', 'modelValue'])
 const emits = defineEmits(['update:modelValue'])
 const model = useVModel(props, 'modelValue', emits)
 
-// 换行需要重新计算高度
-const height = computed(() => 52 + 24 * (model.value.split('\n').length - 1) + 'px')
+const textarea = ref<HTMLElement>()
+const height = ref(24)
+
+// 计算 Textarea 行高
+watch(
+  () => model.value,
+  () => {
+    height.value = 0
+    nextTick(() => {
+      let line = textarea.value!.scrollHeight / 24
+      height.value = Math.min(line, props.maxrow ?? 2) * 24
+    })
+  }
+)
 </script>
 
 <template>
-  <div textarea :style="{ maxHeight: height }">
+  <div :style="{ height: height + 'px' }" @click="textarea?.focus()">
     <label>{{ label }}</label>
-    <textarea :style="{ height }" :type="props.type" v-model="model" />
+    <textarea v-model="model" ref="textarea" :style="{ height: height + 'px' }" />
   </div>
 </template>
