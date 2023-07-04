@@ -1,5 +1,8 @@
 import * as components from './components'
 import { type App } from 'vue'
+
+import '../style/ACommon.css';
+
 export * from './components'
 
 type ComponentName = keyof typeof components
@@ -26,15 +29,15 @@ export default {
     })
   },
   resolver: () =>
-    ({
-      type: 'component',
-      resolve: (componentName: string) => {
-        if (componentNames.includes(componentName as ComponentName)) {
-          return {
-            name: componentName,
-            from: '@all-in-material/component-vue'
-          } as ComponentInfo
-        }
+  ({
+    type: 'component',
+    resolve: (componentName: string) => {
+      if (componentNames.includes(componentName as ComponentName)) {
+        return {
+          name: componentName,
+          from: '@all-in-material/component-vue'
+        } as ComponentInfo
       }
-    } as ComponentResolverObject)
+    }
+  } as ComponentResolverObject)
 }
