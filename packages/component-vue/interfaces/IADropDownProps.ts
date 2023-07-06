@@ -6,7 +6,8 @@ interface IADropDownProps {
         visible?: string[],
         hidden?: string[]
     },
-    transition: IATransition
+    transition: IATransition,
+    when?: 'hover' | 'click'
 }
 
 export type { IADropDownProps }

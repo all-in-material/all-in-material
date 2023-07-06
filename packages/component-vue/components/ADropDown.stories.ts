@@ -20,6 +20,7 @@ export const Standard: Story = {
         template: '<ADropDown v-bind="args" v-model="model"><template #visible>Visible Slot</template><template #hidden>Hidden Slot<br />Hidden Slot 2</template></ADropDown>'
     }),
     args: {
-        transition: 'fade-scale'
+        transition: 'fade-scale',
+        when: 'hover'
     }
 };
