@@ -23,11 +23,11 @@ onClickOutside(hidden, (e: PointerEvent) => {
 
 <template>
   <div class="a-dropdown">
-    <div @click="active = !active" class="a-dropdown-visible" :class="props.slotClass.visible">
+    <div @click="active = !active" class="a-dropdown-visible" :class="props.slotClass?.visible">
       <slot name="visible" />
     </div>
     <Transition :name="props.transition">
-      <div ref="hidden" v-if="active" class="a-dropdown-hidden" :class="props.slotClass.hidden">
+      <div ref="hidden" v-if="active" class="a-dropdown-hidden" :class="props.slotClass?.hidden">
         <slot name="hidden" />
       </div>
     </Transition>

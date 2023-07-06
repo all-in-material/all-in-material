@@ -2,7 +2,7 @@ import type { IATransition } from "./IATransition"
 
 interface IADropDownProps {
     modelValue: boolean,
-    slotClass: {
+    slotClass?: {
         visible?: string[],
         hidden?: string[]
     },
