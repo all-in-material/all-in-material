@@ -3,22 +3,31 @@
     background-color: #fff;
 }
 
-.a-input[drop][standard] .a-input-options {
-    margin-top: 8px;
-    padding: 8px 0;
+.a-input[drop] .a-input-options {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 5px -3px, rgba(0, 0, 0, 0.14) 0px 8px 10px 1px, rgba(0, 0, 0, 0.12) 0px 3px 14px 2px;
     border-radius: 4px;
 }
 
-.a-input[drop][standard] .a-input-option {
+.a-input[drop] .a-input-option {
     padding: 8px 1rem;
     transition: background-color .15s;
 }
 
-.a-input[drop][standard] .a-input-option[selected] {
+.a-input[drop] .a-input-option[selected] {
     background-color: rgba(0, 0, 0, .075) !important;
 }
 
-.a-input[drop][standard] .a-input-option:hover {
+.a-input[drop] .a-input-option:hover {
     background-color: rgba(0, 0, 0, .04);
+}
+
+.a-input[drop][standard] .a-input-options {
+    margin-top: 8px;
+    padding: 8px 0;
+}
+
+.a-input[drop][outlined] .a-input-options {
+    margin-top: 16px;
+    margin-left: -11px;
+    padding: 8px 0;
 }
