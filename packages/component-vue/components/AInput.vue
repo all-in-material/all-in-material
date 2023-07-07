@@ -7,6 +7,7 @@ import AInputInput from './AInput/AInputInput.vue'
 import type { IAInputProps } from '@/interfaces/IAInputProps'
 import AInputTextarea from './AInput/AInputTextarea.vue'
 import AInputHelper from './AInput/AInputHelper.vue'
+import AInputDrop from './AInput/AInputDrop.vue'
 
 const props = defineProps<IAInputProps>()
 const emits = defineEmits(['update:modelValue'])
@@ -55,7 +56,8 @@ const inputType = computed(
     ({
       text: 'input',
       password: 'input',
-      textarea: 'textarea'
+      textarea: 'textarea',
+      select: 'drop'
     }[props.type])
 )
 // 判断组件样式类别
@@ -63,7 +65,8 @@ const inputStyle = computed(
   () =>
     ({
       input: 'common',
-      textarea: 'common'
+      textarea: 'common',
+      drop: 'common'
     }[inputType.value])
 )
 
@@ -85,8 +88,11 @@ const binds = computed(() => ({
   type: props.type,
   label: props.label,
   maxrow: props.maxrow,
+  options: props.options,
 
+  focused: focused.value,
   modelValue: innerModel.value,
+  'onUpdate:focused': (v: boolean) => (focused.value = v),
   'onUpdate:modelValue': (v: string) => (innerModel.value = v)
 }))
 </script>
@@ -95,6 +101,7 @@ const binds = computed(() => ({
   <div v-bind="status" class="a-input" @click="triggerFocus(true)">
     <AInputInput v-bind="binds" v-if="inputType == 'input'" />
     <AInputTextarea v-bind="binds" v-else-if="inputType == 'textarea'" />
+    <AInputDrop v-bind="binds" v-else-if="inputType == 'drop'" />
 
     <AInputHelper v-if="!!$slots?.helper">
       <slot name="helper" />
