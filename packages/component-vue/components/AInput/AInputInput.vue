@@ -8,11 +8,11 @@ const props = defineProps(['label', 'type', 'modelValue'])
 const emits = defineEmits(['update:modelValue'])
 const model = useVModel(props, 'modelValue', emits)
 
-const textarea = ref<HTMLElement>()
+const input = ref<HTMLElement>()
 </script>
 
 <template>
-  <div @click="textarea?.focus()">
+  <div @click="input?.focus()">
     <label>{{ label }}</label>
     <input v-model="model" ref="input" :type="props.type" />
   </div>

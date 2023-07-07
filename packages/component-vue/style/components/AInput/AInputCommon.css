@@ -74,7 +74,7 @@
     transition: outline-width .05s;
 }
 
-.a-input[common][outlined][active] .a-input-fields {
+.a-input[common][outlined][focused] .a-input-fields {
     outline: 1.5px solid #000;
 }
 

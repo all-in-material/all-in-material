@@ -90,6 +90,8 @@ const binds = computed(() => ({
   maxrow: props.maxrow,
   options: props.options,
 
+  active: active.value,
+
   focused: focused.value,
   modelValue: innerModel.value,
   'onUpdate:focused': (v: boolean) => (focused.value = v),
