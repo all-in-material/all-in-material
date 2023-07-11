@@ -5,10 +5,19 @@ interface IAInputProps {
     label: string,
     outlined?: boolean,
     filled?: boolean,
-    modelValue: string,
+    modelValue: string | string[],
     modelModifiers?: IModelModifiers,
     maxrow?: number,
-    options?: Record<string, string>
+    options?: Record<string, string>,
+    multiple?: boolean
 }
 
-export type { IAInputProps }
+interface IAInputDropProps {
+    label: IAInputProps['label'],
+    options: IAInputProps['options'],
+    multiple: IAInputProps['multiple'],
+    modelValue: IAInputProps['modelValue'],
+    focused: boolean,
+}
+
+export type { IAInputProps, IAInputDropProps }

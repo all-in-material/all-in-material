@@ -16,7 +16,7 @@ const target = ref<HTMLElement>()
 // 封装外部 v-model 的双向绑定
 const outerModel = computed({
   get: () => props.modelValue,
-  set: (v: string) => emits('update:modelValue', v)
+  set: (v: string | string[]) => emits('update:modelValue', v)
 })
 // 初始化内部 v-model 的值
 const innerModel = ref(props.modelValue)
@@ -33,7 +33,7 @@ onClickOutside(target, () => triggerFocus(false))
 // 监听外部 v-model 的变化并同步
 watch(
   () => outerModel.value,
-  (v: string) => (innerModel.value = v)
+  (v: string | string[]) => (innerModel.value = v)
 )
 // v-model 正常更新模式 内部 model 变化时同步
 watch(
@@ -89,6 +89,7 @@ const binds = computed(() => ({
   label: props.label,
   maxrow: props.maxrow,
   options: props.options,
+  multiple: props.multiple,
 
   active: active.value,
 

@@ -101,6 +101,25 @@ export const SelectFilled: Story = {
     },
 };
 
+const multipleModel = ref([]);
+
+export const MultipleSelectStandard: Story = {
+    render: (args) => ({
+        components: { AInput },
+        setup: () => ({ args, model: multipleModel, updateModel }),
+        template: '<AInput v-bind="args" v-model="model"><template #helper>{{ model }}</template></AInput>'
+    }),
+    args: {
+        label: '用户名',
+        type: 'select',
+        options: {
+            value1: 'label1',
+            value2: 'label2'
+        },
+        multiple: true
+    },
+};
+
 export const TextareaStandard: Story = {
     render: (args) => ({
         components: { AInput },
