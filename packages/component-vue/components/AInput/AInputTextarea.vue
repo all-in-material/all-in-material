@@ -3,8 +3,9 @@ import '../../style/components/AInput/AInputCommon.css'
 
 import { nextTick, ref, watch } from 'vue'
 import { useVModel } from '@vueuse/core'
+import type { IAInputTextareaProps } from '@/interfaces/IAInputProps'
 
-const props = defineProps(['label', 'maxrow', 'modelValue'])
+const props = defineProps<IAInputTextareaProps>()
 const emits = defineEmits(['update:modelValue'])
 const model = useVModel(props, 'modelValue', emits)
 
