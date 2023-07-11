@@ -186,3 +186,17 @@ export const HelperText: Story = {
         filled: false
     },
 };
+
+const switchModel = ref(false);
+
+export const SwitchStandard: Story = {
+    render: (args) => ({
+        components: { AInput },
+        setup: () => ({ args, model: switchModel, updateModel }),
+        template: '<AInput v-bind="args" v-model="model"><template #helper>帮助文本</template></AInput>'
+    }),
+    args: {
+        label: '用户名',
+        type: 'switch'
+    },
+};

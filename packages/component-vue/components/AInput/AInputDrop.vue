@@ -27,7 +27,9 @@ const select = (value: any) => {
   }
 }
 const isSelected = (value: any) =>
-  props.modelValue ? /* 多选 */ model.value.indexOf(value) != -1 : /* 单选 */ model.value == value
+  props.modelValue
+    ? (model.value as string[]).indexOf(value) != -1 /* 多选 */
+    : model.value == value /* 单选 */
 </script>
 
 <template>
@@ -42,7 +44,7 @@ const isSelected = (value: any) =>
         {{ options![model] }}
       </div>
       <div class="a-input-value" v-else>
-        {{ model.map((v: string) => options![v]).join(', ') }}
+        {{ (model as string[]).map((v: string) => options![v]).join(', ') }}
       </div>
       <select v-model="model" ref="input" hidden />
     </template>
