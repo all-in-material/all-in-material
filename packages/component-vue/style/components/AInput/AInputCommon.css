@@ -1,0 +1,109 @@
+/* Base Style */
+.a-input[common] .a-input-fields {
+    position: relative;
+    cursor: pointer;
+}
+
+.a-input[common] input,
+.a-input[common] textarea {
+    line-height: 24px;
+    width: 100%;
+    resize: none;
+    border: 0;
+    padding: 0;
+    font-size: 1rem;
+    background-color: transparent;
+}
+
+.a-input[common] .a-input-value {
+    line-height: 24px;
+    font-size: 1rem;
+    min-height: 24px;
+}
+
+.a-input[common] label {
+    position: absolute;
+    transform: none;
+}
+
+.a-input[common] input:focus-within,
+.a-input[common] textarea:focus-within {
+    outline: 0;
+}
+
+.a-input[common][standard] .a-input-fields::after,
+.a-input[common][filled] .a-input-fields::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background: #000;
+    transform: translateX(-50%);
+    transition: width .25s;
+}
+
+.a-input[common][standard][focused] .a-input-fields::after,
+.a-input[common][filled][focused] .a-input-fields::after {
+    width: 100%;
+}
+
+.a-input[common][standard] label,
+.a-input[common][filled] label {
+    transition: transform .3s, font-size .3s;
+}
+
+/* Standard Textarea Style */
+.a-input[common][standard] .a-input-fields {
+    padding: 22px 0 6px;
+    border-bottom: 1px solid #000;
+}
+
+.a-input[common][standard][active] label {
+    font-size: .75rem;
+    transform: translateY(-20px);
+}
+
+/* Outlined Textarea Style */
+.a-input[common][outlined] .a-input-fields {
+    padding: 14px 11px;
+    border: 1px solid #000;
+    border-radius: 4px;
+    outline: 0px solid #000000;
+    transition: outline-width .05s;
+}
+
+.a-input[common][outlined][focused] .a-input-fields {
+    outline: 1.5px solid #000;
+}
+
+.a-input[common][outlined] label {
+    background-color: #fff;
+    transition: transform .25s, font-size .25s;
+    margin-left: -5px;
+    padding: 0 5px;
+}
+
+.a-input[common][outlined][active] label {
+    font-size: .75rem;
+    transform: translateY(-23px);
+    background-color: #fff;
+}
+
+/* Filled Textarea Style */
+.a-input[common][filled] .a-input-fields {
+    padding: 23px 12px 5px;
+    border-bottom: 1px solid #000;
+    background-color: rgba(0, 0, 0, .06);
+    border-radius: 4px 4px 0 0;
+}
+
+.a-input[common][filled] label {
+    transform: translateY(-8px);
+}
+
+.a-input[common][filled][active] label {
+    font-size: .65rem;
+    transform: translateY(-18px);
+}

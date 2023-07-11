@@ -1,0 +1,7 @@
+.a-dropdown .a-dropdown-visible {
+    cursor: pointer;
+}
+
+.a-dropdown .a-dropdown-hidden {
+    position: absolute;
+}
