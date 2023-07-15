@@ -1,4 +1,5 @@
 .a-input[switch] .a-input-switch {
+    cursor: pointer;
     display: flex;
     align-items: center;
     border: 2px solid rgb(116, 121, 110);
