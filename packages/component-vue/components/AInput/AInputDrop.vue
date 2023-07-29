@@ -27,7 +27,7 @@ const select = (value: any) => {
   }
 }
 const isSelected = (value: any) =>
-  props.modelValue
+  props.multiple
     ? (model.value as string[]).indexOf(value) != -1 /* 多选 */
     : model.value == value /* 单选 */
 </script>
@@ -60,7 +60,7 @@ const isSelected = (value: any) =>
         :selected="isSelected(value) ? '' : null"
         @click="select(value)"
       >
-        {{ label }}
+        {{ label }} {{ isSelected(value) }}
       </div>
     </template>
   </ADropDown>
