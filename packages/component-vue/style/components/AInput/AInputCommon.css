@@ -4,6 +4,10 @@
     cursor: pointer;
 }
 
+.a-input[common] .a-input-fields[type='textarea'] {
+    box-sizing: content-box;
+}
+
 .a-input[common] input,
 .a-input[common] textarea {
     line-height: 24px;
