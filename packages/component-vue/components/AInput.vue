@@ -20,7 +20,7 @@ const outerModel = computed({
   set: (v: IAInputProps['modelValue']) => emits('update:modelValue', v)
 })
 // 初始化内部 v-model 的值
-const innerModel = ref(props.modelValue)
+const innerModel = ref(props.modelValue ?? '')
 
 // 判断 Label 是否应该上浮
 const focused = ref(false)
@@ -34,7 +34,7 @@ onClickOutside(target, () => triggerFocus(false))
 // 监听外部 v-model 的变化并同步
 watch(
   () => outerModel.value,
-  (v: IAInputProps['modelValue']) => (innerModel.value = v)
+  (v: IAInputProps['modelValue']) => (innerModel.value = v!)
 )
 // v-model 正常更新模式 内部 model 变化时同步
 watch(
