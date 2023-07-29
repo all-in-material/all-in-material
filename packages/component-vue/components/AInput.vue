@@ -75,8 +75,6 @@ const inputStyle = computed(
 
 // 计算绑定的属性
 const status = computed(() => ({
-  ref: 'target',
-
   [inputType.value!]: '',
   [inputStyle.value!]: '',
   focused: focused.value ? '' : null,
@@ -104,7 +102,7 @@ const binds = computed(() => ({
 </script>
 
 <template>
-  <div v-bind="status" class="a-input" @click="triggerFocus(true)">
+  <div v-bind="status" class="a-input" @click="triggerFocus(true)" ref="target">
     <AInputInput v-bind="binds" v-if="inputType == 'input'" />
     <AInputTextarea v-bind="binds" v-else-if="inputType == 'textarea'" />
     <AInputDrop v-bind="binds" v-else-if="inputType == 'drop'" />
