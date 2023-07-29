@@ -2,7 +2,7 @@ import type { InputHTMLAttributes } from "vue"
 import type { IModelModifiers } from "./IModelModifiers"
 
 interface IAInputProps {
-    type: InputHTMLAttributes['type'] | 'select' | 'textarea' | 'switch'
+    type: InputHTMLAttributes['type'] & 'select' & 'textarea' & 'switch'
     label: string
     outlined?: boolean
     filled?: boolean

@@ -60,7 +60,7 @@ const inputType = computed(
       textarea: 'textarea',
       select: 'drop',
       switch: 'switch'
-    }[props.type!])
+    }[(props.type as IAInputProps['type'])!])
 )
 // 判断组件样式类别
 const inputStyle = computed(
