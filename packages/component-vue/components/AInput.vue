@@ -89,7 +89,6 @@ const binds = computed(() => ({
   type: props.type,
   label: props.label,
   maxrow: props.maxrow,
-  options: props.options,
   multiple: props.multiple,
 
   active: active.value,
@@ -105,7 +104,7 @@ const binds = computed(() => ({
   <div v-bind="status" class="a-input" @click="triggerFocus(true)" ref="target">
     <AInputInput v-bind="binds" v-if="inputType == 'input'" />
     <AInputTextarea v-bind="binds" v-else-if="inputType == 'textarea'" />
-    <AInputDrop v-bind="binds" v-else-if="inputType == 'drop'" />
+    <AInputDrop v-bind="binds" v-else-if="inputType == 'drop'" :options="options" />
     <AInputSwitch v-bind="binds" v-else-if="inputType == 'switch'" />
 
     <AInputHelper v-if="!!$slots?.helper && ['input', 'textarea', 'drop'].indexOf(inputType!) != -1">
