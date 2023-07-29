@@ -1,11 +1,11 @@
 import type { IModelModifiers } from "./IModelModifiers"
 
 interface IAInputProps {
-    type: 'text' | 'password' | 'textarea' | 'select' | 'switch'
+    type: 'text' | 'password' | 'textarea' | 'select' | 'switch' | 'number'
     label: string
     outlined?: boolean
     filled?: boolean
-    modelValue?: string | string[] | boolean
+    modelValue?: string | string[] | boolean | number
     modelModifiers?: IModelModifiers
     maxrow?: number
     options?: Record<string, string>

@@ -56,6 +56,7 @@ const inputType = computed(
   () =>
     ({
       text: 'input',
+      number: 'input',
       password: 'input',
       textarea: 'textarea',
       select: 'drop',
