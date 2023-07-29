@@ -40,11 +40,15 @@ const isSelected = (value: any) =>
   >
     <template #visible>
       <label>{{ label }}</label>
-      <div class="a-input-value" v-if="typeof model == 'string'">
-        {{ options![model] }}
-      </div>
-      <div class="a-input-value" v-else>
-        {{ (model as string[]).map((v: string) => options![v]).join(', ') }}
+
+      <div class="a-input-value">
+        {{
+          !model
+            ? ''
+            : typeof model == 'string'
+            ? options![model]
+            : (model as string[]).map((v: string) => options![v]).join(', ')
+        }}
       </div>
       <select v-model="model" ref="input" hidden />
     </template>
