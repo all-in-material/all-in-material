@@ -5,7 +5,7 @@ interface IAInputProps {
     label: string
     outlined?: boolean
     filled?: boolean
-    modelValue?: string | string[] | boolean | number
+    modelValue?: string | string[] | boolean | number | number[]
     modelModifiers?: IModelModifiers
     maxrow?: number
     options?: Record<string, string>
