@@ -60,7 +60,7 @@ const isSelected = (value: any) =>
         :selected="isSelected(value) ? '' : null"
         @click="select(value)"
       >
-        {{ label }} {{ isSelected(value) }}
+        {{ label }}
       </div>
     </template>
   </ADropDown>
