@@ -8,6 +8,7 @@ import type { IAInputProps } from '@/interfaces/IAInputProps'
 import AInputTextarea from './AInput/AInputTextarea.vue'
 import AInputHelper from './AInput/AInputHelper.vue'
 import AInputDrop from './AInput/AInputDrop.vue'
+import AInputSwitch from './AInput/AInputSwitch.vue'
 
 const props = defineProps<IAInputProps>()
 const emits = defineEmits(['update:modelValue'])
@@ -16,10 +17,10 @@ const target = ref<HTMLElement>()
 // 封装外部 v-model 的双向绑定
 const outerModel = computed({
   get: () => props.modelValue,
-  set: (v: string) => emits('update:modelValue', v)
+  set: (v: IAInputProps['modelValue']) => emits('update:modelValue', v)
 })
 // 初始化内部 v-model 的值
-const innerModel = ref(props.modelValue)
+const innerModel = ref(props.modelValue ?? '')
 
 // 判断 Label 是否应该上浮
 const focused = ref(false)
@@ -33,7 +34,7 @@ onClickOutside(target, () => triggerFocus(false))
 // 监听外部 v-model 的变化并同步
 watch(
   () => outerModel.value,
-  (v: string) => (innerModel.value = v)
+  (v: IAInputProps['modelValue']) => (innerModel.value = v!)
 )
 // v-model 正常更新模式 内部 model 变化时同步
 watch(
@@ -55,10 +56,13 @@ const inputType = computed(
   () =>
     ({
       text: 'input',
+      number: 'input',
       password: 'input',
       textarea: 'textarea',
-      select: 'drop'
-    }[props.type])
+      select: 'drop',
+      switch: 'switch',
+      date: 'input'
+    }[(props.type as IAInputProps['type'])!])
 )
 // 判断组件样式类别
 const inputStyle = computed(
@@ -66,15 +70,14 @@ const inputStyle = computed(
     ({
       input: 'common',
       textarea: 'common',
-      drop: 'common'
-    }[inputType.value])
+      drop: 'common',
+      switch: 'switch'
+    }[inputType.value!])
 )
 
 // 计算绑定的属性
 const status = computed(() => ({
-  ref: 'target',
-
-  [inputType.value]: '',
+  [inputType.value!]: '',
   [inputStyle.value!]: '',
   focused: focused.value ? '' : null,
   active: active.value ? '' : null,
@@ -88,7 +91,7 @@ const binds = computed(() => ({
   type: props.type,
   label: props.label,
   maxrow: props.maxrow,
-  options: props.options,
+  multiple: props.multiple,
 
   active: active.value,
 
@@ -100,12 +103,13 @@ const binds = computed(() => ({
 </script>
 
 <template>
-  <div v-bind="status" class="a-input" @click="triggerFocus(true)">
+  <div v-bind="status" class="a-input" @click="triggerFocus(true)" ref="target">
     <AInputInput v-bind="binds" v-if="inputType == 'input'" />
     <AInputTextarea v-bind="binds" v-else-if="inputType == 'textarea'" />
-    <AInputDrop v-bind="binds" v-else-if="inputType == 'drop'" />
+    <AInputDrop v-bind="binds" v-else-if="inputType == 'drop'" :options="options" />
+    <AInputSwitch v-bind="binds" v-else-if="inputType == 'switch'" />
 
-    <AInputHelper v-if="!!$slots?.helper">
+    <AInputHelper v-if="!!$slots?.helper && ['input', 'textarea', 'drop'].indexOf(inputType!) != -1">
       <slot name="helper" />
     </AInputHelper>
   </div>

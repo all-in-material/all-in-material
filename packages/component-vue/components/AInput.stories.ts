@@ -101,6 +101,25 @@ export const SelectFilled: Story = {
     },
 };
 
+const multipleModel = ref([]);
+
+export const MultipleSelectStandard: Story = {
+    render: (args) => ({
+        components: { AInput },
+        setup: () => ({ args, model: multipleModel, updateModel }),
+        template: '<AInput v-bind="args" v-model="model"><template #helper>{{ model }}</template></AInput>'
+    }),
+    args: {
+        label: '用户名',
+        type: 'select',
+        options: {
+            value1: 'label1',
+            value2: 'label2'
+        },
+        multiple: true
+    },
+};
+
 export const TextareaStandard: Story = {
     render: (args) => ({
         components: { AInput },
@@ -165,5 +184,19 @@ export const HelperText: Story = {
         type: 'text',
         outlined: false,
         filled: false
+    },
+};
+
+const switchModel = ref(false);
+
+export const SwitchStandard: Story = {
+    render: (args) => ({
+        components: { AInput },
+        setup: () => ({ args, model: switchModel, updateModel }),
+        template: '<AInput v-bind="args" v-model="model"><template #helper>帮助文本</template></AInput>'
+    }),
+    args: {
+        label: '用户名',
+        type: 'switch'
     },
 };

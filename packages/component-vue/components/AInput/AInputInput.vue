@@ -1,10 +1,11 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
 import '../../style/components/AInput/AInputCommon.css'
 
+import { ref } from 'vue'
 import { useVModel } from '@vueuse/core'
+import type { IAInputInputProps } from '@/interfaces/IAInputProps'
 
-const props = defineProps(['label', 'type', 'modelValue'])
+const props = defineProps<IAInputInputProps>()
 const emits = defineEmits(['update:modelValue'])
 const model = useVModel(props, 'modelValue', emits)
 

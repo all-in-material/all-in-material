@@ -1,0 +1,36 @@
+.a-input[switch] .a-input-switch {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgb(116, 121, 110);
+    background-color: rgb(223, 228, 214);
+    height: 30px;
+    width: 52px;
+    border-radius: 30px;
+    transition: background-color .3s, border-color .3s;
+}
+
+.a-input[switch] .a-input-switch::after {
+    --margin: 6px;
+    display: block;
+    content: '';
+    height: calc(100% - var(--margin) * 2);
+    margin-left: var(--margin);
+    transform: none;
+    aspect-ratio: 1 / 1;
+    background-color: rgb(116, 121, 110);
+    border-radius: 50%;
+    transition: background-color .3s, margin-left .3s, transform .3s, height .3s;
+}
+
+.a-input[switch] .a-input-switch[checked] {
+    border-color: rgb(56, 106, 32);
+    background-color: rgb(56, 106, 32);
+}
+
+.a-input[switch] .a-input-switch[checked]::after {
+    --margin: 4px;
+    background-color: #fff;
+    margin-left: calc(100% - var(--margin));
+    transform: translateX(-100%);
+}
