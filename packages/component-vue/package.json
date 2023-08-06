@@ -1,6 +1,6 @@
 {
   "name": "@all-in-material/component-vue",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "files": [
     "dist",
     "components"
@@ -65,5 +65,9 @@
     "vite-plugin-dts": "^2.3.0",
     "vite-plugin-no-bundle": "^2.0.2",
     "vue-tsc": "^1.6.5"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   }
 }
