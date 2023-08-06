@@ -1,7 +1,7 @@
 import type { IModelModifiers } from "./IModelModifiers"
 
 interface IAInputProps {
-    type: 'text' | 'password' | 'textarea' | 'select' | 'switch' | 'number'
+    type: 'text' | 'password' | 'textarea' | 'select' | 'switch' | 'number' | 'date'
     label: string
     outlined?: boolean
     filled?: boolean
